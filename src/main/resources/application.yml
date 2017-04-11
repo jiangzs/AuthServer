@@ -1,0 +1,31 @@
+server:
+  port: 5000
+
+
+spring:
+  cloud:
+    config:
+      profile: ${config.profile:docker} # profile
+      name: log_queue,sleuth_queue,authServer      # 配置文件
+#//sleuth
+  rabbitmq:
+    host: ${sleuth.spring.rabbitmq.host:localhost}
+    port: ${sleuth.spring.rabbitmq.port:5762}
+    username: ${sleuth.spring.rabbitmq.username:guest}
+    password: ${sleuth.spring.rabbitmq.password:guest}
+
+  data:
+    mongodb:
+      host: 192.168.99.100
+      username: user
+      password: userpassword
+      database: piggymetrics
+      port: 27017
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://authServer/uaa/users/current
+#  user:
+#    password: auth-server_password
+#    name: user
